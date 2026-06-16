@@ -71,7 +71,7 @@ function ArchDiagram({ nodes }: { nodes: Project["arch"] }) {
 
 export default function ProjectsPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
+    <div className="mx-auto max-w-5xl px-6 py-8 lg:py-16">
       <h1 className="mb-12 font-mono text-2xl font-bold text-sky sm:text-3xl">
         ## Built &amp; Deployed
       </h1>

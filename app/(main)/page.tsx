@@ -6,7 +6,7 @@ export default function Home() {
     <div className="hero-glow">
       <div className="mx-auto max-w-5xl px-6">
         {/* Hero */}
-        <section className="grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[1.4fr_1fr]">
+        <section className="grid items-center gap-12 py-8 sm:py-28 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col items-start gap-6">
             <span className="rounded-full border border-white/10 bg-surface/60 px-3 py-1 font-mono text-xs text-muted">
               <span className="text-sky">$</span> whoami → senior full-stack dev

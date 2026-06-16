@@ -75,7 +75,7 @@ function Badge({ kind }: { kind: ContentItem["kind"] }) {
 
 export default function BlogPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20">
+    <div className="mx-auto max-w-5xl px-6 py-8 lg:py-16">
       <header className="mb-12">
         <h1 className="font-mono text-2xl font-bold text-sky sm:text-3xl">
           ## Written Thoughts &amp; Visual Logs
