@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { TechStack } from "@/app/components/tech-stack";
+import { useLang } from "@/app/context/lang-context";
 
 export default function Home() {
+  const { t } = useLang();
+
   return (
     <div className="hero-glow">
       <div className="mx-auto max-w-5xl px-6">
@@ -13,13 +18,11 @@ export default function Home() {
             </span>
 
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-              Hi, I&apos;m <span className="text-gradient">Oscar</span>.
+              {t.home.greeting} <span className="text-gradient">Oscar</span>.
             </h1>
 
             <p className="max-w-xl text-lg leading-8 text-muted">
-              Full-stack JavaScript Engineer by night, absurd content creator
-              and traveler by day. Building scalable web apps since 2018, and
-              making tech less boring one video at a time.
+              {t.home.bio}
             </p>
 
             <div className="flex flex-col gap-4 pt-2 sm:flex-row">
@@ -27,13 +30,13 @@ export default function Home() {
                 href="/blog"
                 className="inline-flex h-12 items-center justify-center rounded-xl bg-sky px-6 font-medium text-[#0B0F19] transition-all duration-200 hover:shadow-[0_0_20px_rgba(56,189,248,0.45)]"
               >
-                Read My Blog
+                {t.home.readBlog}
               </Link>
               <Link
                 href="/blog"
                 className="inline-flex h-12 items-center justify-center rounded-xl border border-rose px-6 font-medium text-rose transition-all duration-200 hover:bg-rose/10 hover:shadow-[0_0_20px_rgba(244,63,94,0.35)]"
               >
-                Watch My Vlog
+                {t.home.watchVlog}
               </Link>
             </div>
           </div>
@@ -67,7 +70,7 @@ export default function Home() {
         {/* Tech stack */}
         <section className="border-t border-white/5 py-16">
           <h2 className="mb-8 font-mono text-sm uppercase tracking-widest text-muted">
-            <span className="text-sky">//</span> Tech I build with
+            <span className="text-sky">//</span> {t.home.techTitle}
           </h2>
           <TechStack />
         </section>
