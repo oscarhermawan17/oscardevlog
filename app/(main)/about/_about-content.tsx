@@ -5,12 +5,12 @@ import { useLang } from "@/app/context/lang-context";
 import { portableTextComponents } from "@/lib/portable-text";
 import type { AboutPageData } from "@/sanity/queries/about-page";
 
-const TAGS = ["JavaScript", "Next.js", "Express", "Redis", "PostgreSQL", "Docker", "Nginx", "GitHub Actions"];
+const TAGS = ["JavaScript", "React", "Next.js", "Express", "Redis", "PostgreSQL", "Docker", "Nginx", "GitHub Actions"];
 
 export function AboutContent({ data }: { data: AboutPageData | null }) {
-  const { lang, t } = useLang();
+  const { lang } = useLang();
 
-  const title = data?.title?.[lang] ?? t.about.title;
+  const title = data?.title?.[lang] ?? "";
   const subtitle = data?.subtitle?.[lang];
 
   return (

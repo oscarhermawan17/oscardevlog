@@ -10,7 +10,7 @@ import type { HomePageData } from "@/sanity/queries/home-page";
 export function HomeContent({ data }: { data: HomePageData | null }) {
   const { lang, t } = useLang();
 
-  const title = data?.title?.[lang] ?? t.home.greeting;
+  const title = data?.title?.[lang] ?? "";
   const subtitle = data?.subtitle?.[lang];
 
   return (
@@ -20,7 +20,7 @@ export function HomeContent({ data }: { data: HomePageData | null }) {
         <section className="grid items-center gap-12 py-8 sm:py-28 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col items-start gap-6">
             <span className="rounded-full border border-white/10 bg-surface/60 px-3 py-1 font-mono text-xs text-muted">
-              <span className="text-sky">$</span> whoami → full-stuck javascript dev
+              <span className="text-sky">$</span> whoami → full-stack javascript dev
             </span>
 
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
@@ -30,9 +30,7 @@ export function HomeContent({ data }: { data: HomePageData | null }) {
             <div className="max-w-xl text-lg leading-8 text-muted">
               {subtitle ? (
                 <PortableText value={subtitle} components={portableTextComponents} />
-              ) : (
-                <p>{t.home.bio}</p>
-              )}
+              ) : null}
             </div>
 
             <div className="flex flex-col gap-4 pt-2 sm:flex-row">

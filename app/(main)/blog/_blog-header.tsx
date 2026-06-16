@@ -6,9 +6,9 @@ import { portableTextComponents } from "@/lib/portable-text";
 import type { BlogPageData } from "@/sanity/queries/blog-page";
 
 export function BlogHeader({ data }: { data: BlogPageData | null }) {
-  const { lang, t } = useLang();
+  const { lang } = useLang();
 
-  const title = data?.title?.[lang] ?? t.blog.title;
+  const title = data?.title?.[lang] ?? "";
   const subtitle = data?.subtitle?.[lang];
 
   return (
@@ -20,9 +20,7 @@ export function BlogHeader({ data }: { data: BlogPageData | null }) {
         <div className="mt-3 max-w-2xl text-muted">
           <PortableText value={subtitle} components={portableTextComponents} />
         </div>
-      ) : (
-        <p className="mt-3 max-w-2xl text-muted">{t.blog.subtitle}</p>
-      )}
+      ) : null}
     </header>
   );
 }
