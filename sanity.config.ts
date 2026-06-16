@@ -38,6 +38,9 @@ export default defineConfig({
                   .schemaType("blogPage")
                   .documentId("blogPage")
               ),
+            S.divider(),
+            S.documentTypeListItem("post").title("Posts"),
+            S.documentTypeListItem("tag").title("Tags"),
           ]),
     }),
   ],
