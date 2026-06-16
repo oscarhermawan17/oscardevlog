@@ -20,7 +20,7 @@ export function HomeContent({ data }: { data: HomePageData | null }) {
         <section className="grid items-center gap-12 py-8 sm:py-28 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col items-start gap-6">
             <span className="rounded-full border border-white/10 bg-surface/60 px-3 py-1 font-mono text-xs text-muted">
-              <span className="text-sky">$</span> whoami → senior full-stack dev
+              <span className="text-sky">$</span> whoami → full-stuck javascript dev
             </span>
 
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
@@ -80,7 +80,7 @@ export function HomeContent({ data }: { data: HomePageData | null }) {
         {/* Tech stack */}
         <section className="border-t border-white/5 py-16">
           <h2 className="mb-8 font-mono text-sm uppercase tracking-widest text-muted">
-            <span className="text-sky">//</span> {t.home.techTitle}
+            <span className="text-sky">{"//"}</span> {t.home.techTitle}
           </h2>
           <TechStack />
         </section>
