@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PortableText } from "next-sanity";
 import { TechStack } from "@/app/components/tech-stack";
 import { useLang } from "@/app/context/lang-context";
+import { portableTextComponents } from "@/lib/portable-text";
 import type { HomePageData } from "@/sanity/queries/home-page";
 
 export function HomeContent({ data }: { data: HomePageData | null }) {
@@ -28,7 +29,7 @@ export function HomeContent({ data }: { data: HomePageData | null }) {
 
             <div className="max-w-xl text-lg leading-8 text-muted">
               {subtitle ? (
-                <PortableText value={subtitle} />
+                <PortableText value={subtitle} components={portableTextComponents} />
               ) : (
                 <p>{t.home.bio}</p>
               )}
