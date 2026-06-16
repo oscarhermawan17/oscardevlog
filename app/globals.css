@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand palette */
+  --color-base: #0b0f19; /* Deep Cyber Blue – main background */
+  --color-surface: #1e293b; /* Slate Dark – cards / elevated areas */
+  --color-sky: #38bdf8; /* Primary accent – tech / engineering */
+  --color-rose: #f43f5e; /* Secondary accent – vlog / fun */
+  --color-ink: #f8fafc; /* Primary text – off white */
+  --color-muted: #94a3b8; /* Secondary text – muted slate */
+
+  /* Typography */
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Consistent rounded-xl across the system */
+  --radius-xl: 12px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  /* Offset anchor scrolling for the fixed glass navbar */
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Brand gradient text helper (used for the "Oscar" highlight) */
+.text-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-sky) 0%,
+    var(--color-rose) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtle ambient glow behind the hero */
+.hero-glow {
+  background:
+    radial-gradient(
+      40rem 30rem at 75% 20%,
+      rgba(56, 189, 248, 0.12),
+      transparent 70%
+    ),
+    radial-gradient(
+      35rem 28rem at 15% 80%,
+      rgba(244, 63, 94, 0.1),
+      transparent 70%
+    );
 }
