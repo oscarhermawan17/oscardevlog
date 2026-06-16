@@ -2,7 +2,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./sanity/schemas";
 
-const SINGLETONS = new Set(["homePage"]);
+const SINGLETONS = new Set(["homePage", "aboutPage"]);
 
 export default defineConfig({
   basePath: "/studio",
@@ -21,6 +21,14 @@ export default defineConfig({
                 S.document()
                   .schemaType("homePage")
                   .documentId("homePage")
+              ),
+            S.listItem()
+              .title("About Page")
+              .id("aboutPage")
+              .child(
+                S.document()
+                  .schemaType("aboutPage")
+                  .documentId("aboutPage")
               ),
           ]),
     }),
