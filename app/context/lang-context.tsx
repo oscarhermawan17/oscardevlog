@@ -11,7 +11,7 @@ import translations, { type Lang } from "@/lib/i18n";
 
 type LangContextValue = {
   lang: Lang;
-  t: typeof translations.en;
+  t: (typeof translations)[Lang];
   toggle: () => void;
 };
 
