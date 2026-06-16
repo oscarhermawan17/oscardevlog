@@ -18,7 +18,7 @@ type LangContextValue = {
 const LangContext = createContext<LangContextValue | null>(null);
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("id");
+  const [lang, setLang] = useState<Lang>("en");
 
   // Baca preferensi dari localStorage saat pertama load
   useEffect(() => {

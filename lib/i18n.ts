@@ -14,7 +14,7 @@ const translations = {
       bio: "Full-stack JavaScript Engineer di malam hari, kreator konten absurd dan traveler di siang hari. Membangun web app scalable sejak 2018, dan membuat teknologi lebih seru satu video sekali waktu.",
       readBlog: "Baca Blog",
       watchVlog: "Tonton Vlog",
-      techTitle: "// Tech yang saya pakai",
+      techTitle: "Tech yang saya pakai",
     },
     about: {
       title: "## Di Dalam Terminal & Lebih Jauh",
@@ -49,7 +49,7 @@ const translations = {
       bio: "Full-stack JavaScript Engineer by night, absurd content creator and traveler by day. Building scalable web apps since 2018, and making tech less boring one video at a time.",
       readBlog: "Read My Blog",
       watchVlog: "Watch My Vlog",
-      techTitle: "// Tech I build with",
+      techTitle: "Tech I build with",
     },
     about: {
       title: "## Inside the Terminal & Beyond",
