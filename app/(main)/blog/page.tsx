@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { getBlogPage } from "@/sanity/queries/blog-page";
+import { BlogHeader } from "./_blog-header";
 
 export const metadata: Metadata = {
   title: "Blog & Vlog",
@@ -73,18 +75,12 @@ function Badge({ kind }: { kind: ContentItem["kind"] }) {
   );
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const data = await getBlogPage();
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-8 lg:py-16">
-      <header className="mb-12">
-        <h1 className="font-mono text-2xl font-bold text-sky sm:text-3xl">
-          ## Written Thoughts &amp; Visual Logs
-        </h1>
-        <p className="mt-3 max-w-2xl text-muted">
-          Tutorial coding yang jujur, komedi absurd seputar realita programmer,
-          dan jurnal perjalanan. Semua dalam satu feed.
-        </p>
-      </header>
+      <BlogHeader data={data} />
 
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {ITEMS.map((item) => (
