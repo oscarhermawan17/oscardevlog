@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Projects",
   description: "Built & deployed — architecture-first project breakdowns.",
-};
+}
 
 type Project = {
-  title: string;
-  description: string;
-  tech: string[];
-  arch: { label: string; sub: string }[];
-  details: string[];
-};
+  title: string
+  description: string
+  tech: string[]
+  arch: { label: string; sub: string }[]
+  details: string[]
+}
 
 const PROJECTS: Project[] = [
   {
@@ -47,7 +47,7 @@ const PROJECTS: Project[] = [
       "Dikemas dalam container dan dideploy di belakang reverse proxy Nginx.",
     ],
   },
-];
+]
 
 function ArchDiagram({ nodes }: { nodes: Project["arch"] }) {
   return (
@@ -66,14 +66,14 @@ function ArchDiagram({ nodes }: { nodes: Project["arch"] }) {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default function ProjectsPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-8 lg:py-16">
       <h1 className="mb-12 font-mono text-2xl font-bold text-sky sm:text-3xl">
-        ## Built &amp; Deployed
+        [ Built, & Deployed ]
       </h1>
 
       <div className="space-y-8">
@@ -129,5 +129,5 @@ export default function ProjectsPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }
