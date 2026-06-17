@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "@/app/context/lang-context";
+
+const COOLDOWN_MS = 10 * 60 * 1000;
+const COOLDOWN_KEY = "contact_last_sent";
 
 const strings = {
   en: {
@@ -46,6 +49,29 @@ export function ContactContent() {
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [cooldownLeft, setCooldownLeft] = useState(0);
+
+  useEffect(() => {
+    const last = localStorage.getItem(COOLDOWN_KEY);
+    if (last) {
+      const remaining = COOLDOWN_MS - (Date.now() - parseInt(last));
+      if (remaining > 0) setCooldownLeft(remaining);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cooldownLeft <= 0) return;
+    const timer = setInterval(() => {
+      setCooldownLeft((prev) => (prev <= 1000 ? 0 : prev - 1000));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [cooldownLeft]);
+
+  const formatCooldown = (ms: number) => {
+    const m = Math.floor(ms / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    return `${m}:${s.toString().padStart(2, "0")}`;
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -65,6 +91,8 @@ export function ContactContent() {
       if (!res.ok) throw new Error();
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
+      localStorage.setItem(COOLDOWN_KEY, Date.now().toString());
+      setCooldownLeft(COOLDOWN_MS);
     } catch {
       setStatus("error");
     }
@@ -152,9 +180,16 @@ export function ContactContent() {
             </p>
           )}
 
+          {cooldownLeft > 0 && (
+            <p className="font-mono text-xs text-muted/60">
+              {lang === "id" ? "Bisa kirim lagi dalam" : "Can send again in"}{" "}
+              <span className="text-sky">{formatCooldown(cooldownLeft)}</span>
+            </p>
+          )}
+
           <button
             type="submit"
-            disabled={status === "loading" || status === "success"}
+            disabled={status === "loading" || cooldownLeft > 0}
             className="self-start rounded-lg bg-sky px-6 py-3 text-sm font-semibold text-[#0B0F19] transition-all hover:bg-sky/85 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {status === "loading" ? s.sending : s.send}
