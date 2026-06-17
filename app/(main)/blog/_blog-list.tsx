@@ -92,7 +92,7 @@ export function BlogList({ posts }: { posts: PostItem[] }) {
                 : "hover:border-rose/40"
             }`}
           >
-            <Badge format={post.format} />
+            <div><Badge format={post.format} /></div>
             <h2 className="text-lg font-bold leading-snug text-ink">
               {post.title[lang]}
             </h2>
