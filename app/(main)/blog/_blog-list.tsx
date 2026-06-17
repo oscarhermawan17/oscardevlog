@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLang } from "@/app/context/lang-context";
 import type { PostItem } from "@/sanity/queries/posts";
 
@@ -64,14 +65,17 @@ function Badge({ format }: { format: "article" | "video" }) {
   );
 }
 
+const cardClass = (format: "article" | "video") =>
+  `group flex h-full flex-col gap-4 rounded-xl border border-white/5 bg-surface p-6 transition-all duration-200 hover:-translate-y-1 ${
+    format === "article" ? "hover:border-sky/40" : "hover:border-rose/40"
+  }`;
+
 function formatMeta(post: PostItem, lang: "en" | "id") {
   const date = new Date(post.publishedAt).toLocaleDateString(
     lang === "id" ? "id-ID" : "en-US",
     { month: "short", year: "numeric" }
   );
-  if (post.format === "video") {
-    return `${post.readTime} min watch • ${date}`;
-  }
+  if (post.format === "video") return `${post.readTime} min watch • ${date}`;
   return lang === "id"
     ? `${post.readTime} mnt baca • ${date}`
     : `${post.readTime} min read • ${date}`;
@@ -82,41 +86,29 @@ export function BlogList({ posts }: { posts: PostItem[] }) {
 
   return (
     <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {/* Real posts from Sanity */}
       {posts.map((post) => (
         <li key={post._id}>
-          <article
-            className={`group flex h-full flex-col gap-4 rounded-xl border border-white/5 bg-surface p-6 transition-all duration-200 hover:-translate-y-1 ${
-              post.format === "article"
-                ? "hover:border-sky/40"
-                : "hover:border-rose/40"
-            }`}
-          >
-            <div><Badge format={post.format} /></div>
-            <h2 className="text-lg font-bold leading-snug text-ink">
-              {post.title[lang]}
-            </h2>
-            <p className="flex-1 text-sm leading-6 text-muted">
-              {post.excerpt[lang]}
-            </p>
-            <p className="font-mono text-xs text-muted">
-              {formatMeta(post, lang)}
-            </p>
-          </article>
+          <Link href={`/blog/${post.slug.current}`} className="block h-full">
+            <article className={cardClass(post.format)}>
+              <div><Badge format={post.format} /></div>
+              <h2 className="text-lg font-bold leading-snug text-ink">
+                {post.title[lang]}
+              </h2>
+              <p className="flex-1 text-sm leading-6 text-muted">
+                {post.excerpt[lang]}
+              </p>
+              <p className="font-mono text-xs text-muted">
+                {formatMeta(post, lang)}
+              </p>
+            </article>
+          </Link>
         </li>
       ))}
 
-      {/* Mock items for comparison */}
       {MOCK_ITEMS.map((item) => (
         <li key={item.title}>
-          <article
-            className={`group flex h-full flex-col gap-4 rounded-xl border border-white/5 bg-surface/50 p-6 opacity-60 transition-all duration-200 hover:-translate-y-1 ${
-              item.format === "article"
-                ? "hover:border-sky/40"
-                : "hover:border-rose/40"
-            }`}
-          >
-            <Badge format={item.format} />
+          <article className={cardClass(item.format)}>
+            <div><Badge format={item.format} /></div>
             <h2 className="text-lg font-bold leading-snug text-ink">
               {item.title}
             </h2>
