@@ -1,6 +1,28 @@
+import Image from "next/image";
 import type { PortableTextComponents } from "next-sanity";
 
 export const portableTextComponents: PortableTextComponents = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?.url) return null;
+      return (
+        <figure className="my-6">
+          <Image
+            src={value.asset.url}
+            alt={value.alt ?? ""}
+            width={800}
+            height={450}
+            className="w-full rounded-xl"
+          />
+          {value.caption && (
+            <figcaption className="mt-2 text-center text-sm text-muted">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+  },
   block: {
     normal: ({ children }) => (
       <p className="mb-4 last:mb-0">{children}</p>

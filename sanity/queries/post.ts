@@ -28,7 +28,16 @@ export async function getPost(slug: string): Promise<PostDetail | null> {
       coverImage { asset->{ url }, alt },
       title,
       excerpt,
-      body,
+      "body": {
+        "en": body.en[] {
+          ...,
+          _type == "image" => { ..., asset->{ url } }
+        },
+        "id": body.id[] {
+          ...,
+          _type == "image" => { ..., asset->{ url } }
+        }
+      },
       "tags": tags[]->{ name, slug }
     }`,
     { slug },
