@@ -118,8 +118,8 @@ export const post = defineType({
       title: "Slug",
       type: "slug",
       group: "meta",
-      description: "URL identifier in English. e.g. docker-setup-from-scratch",
-      options: { source: "title.en", maxLength: 96 },
+      description: "URL slug otomatis dari judul Indonesia. e.g. null-vs-undefined-javascript",
+      options: { source: "title.id", maxLength: 96 },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
