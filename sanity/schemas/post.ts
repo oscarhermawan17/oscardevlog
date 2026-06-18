@@ -8,14 +8,14 @@ const bilingualString = (name: string, title: string, description?: string) =>
     description,
     fields: [
       defineField({
-        name: "en",
-        title: "English",
+        name: "id",
+        title: "Indonesian",
         type: "string",
         validation: (Rule) => Rule.required(),
       }),
       defineField({
-        name: "id",
-        title: "Indonesian",
+        name: "en",
+        title: "English",
         type: "string",
         validation: (Rule) => Rule.required(),
       }),
@@ -225,14 +225,14 @@ export const post = defineType({
       description: "Full post content. Images are shared via Sanity asset library — upload once, insert in both.",
       fields: [
         defineField({
-          name: "en",
-          title: "English",
+          name: "id",
+          title: "Indonesian",
           type: "array",
           of: [bodyBlock, bodyImageBlock, bodyCodeBlock],
         }),
         defineField({
-          name: "id",
-          title: "Indonesian",
+          name: "en",
+          title: "English",
           type: "array",
           of: [bodyBlock, bodyImageBlock, bodyCodeBlock],
         }),
@@ -242,7 +242,7 @@ export const post = defineType({
 
   preview: {
     select: {
-      title: "title.en",
+      title: "title.id",
       subtitle: "format",
       media: "coverImage",
     },

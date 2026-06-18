@@ -11,8 +11,8 @@ export default async function OgImage({ params }: Props) {
   const { slug } = await params;
   const post = await getPost(slug);
 
-  const title = post?.title.en ?? "oscardevlog.me";
-  const excerpt = post?.excerpt.en ?? "Oscar Hermawan — Full-stack JavaScript Engineer";
+  const title = post?.title.id ?? "oscardevlog.me";
+  const excerpt = post?.excerpt.id ?? "Oscar Hermawan — Full-stack JavaScript Engineer";
   const badge = post?.format === "video" ? "#Video" : "#Article";
   const badgeColor = post?.format === "video" ? "#F43F5E" : "#38BDF8";
 

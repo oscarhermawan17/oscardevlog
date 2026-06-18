@@ -31,19 +31,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : undefined;
 
   return {
-    title: post.title.en,
-    description: post.excerpt.en,
+    title: post.title.id,
+    description: post.excerpt.id,
     openGraph: {
-      title: post.title.en,
-      description: post.excerpt.en,
+      title: post.title.id,
+      description: post.excerpt.id,
       type: "article",
       publishedTime: post.publishedAt,
       ...(ogImage && { images: [{ url: ogImage, width: 1200, height: 630 }] }),
     },
     twitter: {
       card: ogImage ? "summary_large_image" : "summary",
-      title: post.title.en,
-      description: post.excerpt.en,
+      title: post.title.id,
+      description: post.excerpt.id,
       ...(ogImage && { images: [ogImage] }),
     },
   };
