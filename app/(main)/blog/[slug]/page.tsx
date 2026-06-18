@@ -1,9 +1,25 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPost } from "@/sanity/queries/post";
+import { highlightCode } from "@/lib/highlight-code";
 import { PostContent } from "./_post-content";
 
 type Props = { params: Promise<{ slug: string }> };
+
+async function processBody(body: unknown[]): Promise<unknown[]> {
+  return Promise.all(
+    body.map(async (block: any) => {
+      if (block._type === "code" && block.code) {
+        const highlightedHtml = await highlightCode(
+          block.code,
+          block.language ?? "text"
+        );
+        return { ...block, highlightedHtml };
+      }
+      return block;
+    })
+  );
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -37,5 +53,14 @@ export default async function PostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) notFound();
-  return <PostContent post={post} />;
+
+  const processedPost = {
+    ...post,
+    body: {
+      en: await processBody(post.body.en ?? []),
+      id: await processBody(post.body.id ?? []),
+    },
+  };
+
+  return <PostContent post={processedPost as typeof post} />;
 }

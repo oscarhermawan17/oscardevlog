@@ -42,6 +42,26 @@ const bodyImageBlock = defineArrayMember({
   ],
 });
 
+const bodyCodeBlock = defineArrayMember({
+  type: "code",
+  options: {
+    language: "javascript",
+    languageAlternatives: [
+      { title: "JavaScript", value: "javascript" },
+      { title: "TypeScript", value: "typescript" },
+      { title: "JSX", value: "jsx" },
+      { title: "TSX", value: "tsx" },
+      { title: "HTML", value: "html" },
+      { title: "CSS", value: "css" },
+      { title: "Bash / Shell", value: "bash" },
+      { title: "JSON", value: "json" },
+      { title: "SQL", value: "sql" },
+      { title: "Python", value: "python" },
+      { title: "Plain text", value: "text" },
+    ],
+  },
+});
+
 const bodyBlock = defineArrayMember({
   type: "block",
   styles: [
@@ -208,13 +228,13 @@ export const post = defineType({
           name: "en",
           title: "English",
           type: "array",
-          of: [bodyBlock, bodyImageBlock],
+          of: [bodyBlock, bodyImageBlock, bodyCodeBlock],
         }),
         defineField({
           name: "id",
           title: "Indonesian",
           type: "array",
-          of: [bodyBlock, bodyImageBlock],
+          of: [bodyBlock, bodyImageBlock, bodyCodeBlock],
         }),
       ],
     }),
