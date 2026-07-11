@@ -37,20 +37,83 @@ export const project = defineType({
     defineField({
       name: "description",
       title: "Description",
+      description: "Supports bold text and links only — no headings or lists.",
       type: "object",
       fields: [
         defineField({
           name: "id",
           title: "Indonesian",
-          type: "text",
-          rows: 3,
+          type: "array",
+          of: [
+            defineArrayMember({
+              type: "block",
+              styles: [{ title: "Normal", value: "normal" }],
+              lists: [],
+              marks: {
+                decorators: [{ title: "Bold", value: "strong" }],
+                annotations: [
+                  defineArrayMember({
+                    name: "link",
+                    type: "object",
+                    title: "Link",
+                    fields: [
+                      defineField({
+                        name: "href",
+                        title: "URL",
+                        type: "url",
+                        validation: (Rule) =>
+                          Rule.uri({ scheme: ["http", "https", "mailto"] }),
+                      }),
+                      defineField({
+                        name: "blank",
+                        title: "Open in new tab",
+                        type: "boolean",
+                        initialValue: true,
+                      }),
+                    ],
+                  }),
+                ],
+              },
+            }),
+          ],
           validation: (Rule) => Rule.required(),
         }),
         defineField({
           name: "en",
           title: "English",
-          type: "text",
-          rows: 3,
+          type: "array",
+          of: [
+            defineArrayMember({
+              type: "block",
+              styles: [{ title: "Normal", value: "normal" }],
+              lists: [],
+              marks: {
+                decorators: [{ title: "Bold", value: "strong" }],
+                annotations: [
+                  defineArrayMember({
+                    name: "link",
+                    type: "object",
+                    title: "Link",
+                    fields: [
+                      defineField({
+                        name: "href",
+                        title: "URL",
+                        type: "url",
+                        validation: (Rule) =>
+                          Rule.uri({ scheme: ["http", "https", "mailto"] }),
+                      }),
+                      defineField({
+                        name: "blank",
+                        title: "Open in new tab",
+                        type: "boolean",
+                        initialValue: true,
+                      }),
+                    ],
+                  }),
+                ],
+              },
+            }),
+          ],
           validation: (Rule) => Rule.required(),
         }),
       ],

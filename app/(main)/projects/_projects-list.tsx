@@ -1,7 +1,27 @@
 "use client"
 
+import { PortableText } from "next-sanity"
 import { useLang } from "@/app/context/lang-context"
 import type { ProjectItem, ArchNode } from "@/sanity/queries/projects"
+import type { PortableTextComponents } from "next-sanity"
+
+const descriptionComponents: PortableTextComponents = {
+  marks: {
+    strong: ({ children }) => (
+      <strong className="font-semibold text-ink">{children}</strong>
+    ),
+    link: ({ value, children }) => (
+      <a
+        href={value?.href}
+        target={value?.blank ? "_blank" : undefined}
+        rel={value?.blank ? "noopener noreferrer" : undefined}
+        className="text-sky underline underline-offset-2 hover:text-sky/80"
+      >
+        {children}
+      </a>
+    ),
+  },
+}
 
 function ArchDiagram({
   nodes,
@@ -48,9 +68,12 @@ export function ProjectsList({ projects }: { projects: ProjectItem[] }) {
           <h2 className="text-xl font-bold text-ink sm:text-2xl">
             {project.title[lang]}
           </h2>
-          <p className="mt-3 max-w-3xl leading-7 text-muted">
-            {project.description[lang]}
-          </p>
+          <div className="mt-3 max-w-3xl leading-7 text-muted">
+            <PortableText
+              value={project.description[lang]}
+              components={descriptionComponents}
+            />
+          </div>
 
           <div className="mt-5 flex flex-wrap gap-2 font-mono text-xs">
             {project.tech.map((tag) => (

@@ -1,5 +1,6 @@
 import { groq } from "next-sanity"
 import { sanityClient } from "@/lib/sanity"
+import type { PortableTextBlock } from "sanity"
 
 export type ArchNode = {
   label: string
@@ -15,7 +16,7 @@ export type TagRef = {
 export type ProjectItem = {
   _id: string
   title: { id: string; en: string }
-  description: { id: string; en: string }
+  description: { id: PortableTextBlock[]; en: PortableTextBlock[] }
   tech: TagRef[]
   arch: ArchNode[]
   details: { id: string; en: string }[]
