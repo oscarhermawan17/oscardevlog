@@ -1,9 +1,9 @@
-import { defineConfig } from "sanity";
-import { structureTool } from "sanity/structure";
-import { codeInput } from "@sanity/code-input";
-import { schemaTypes } from "./sanity/schemas";
+import { defineConfig } from "sanity"
+import { structureTool } from "sanity/structure"
+import { codeInput } from "@sanity/code-input"
+import { schemaTypes } from "./sanity/schemas"
 
-const SINGLETONS = new Set(["homePage", "aboutPage", "blogPage"]);
+const SINGLETONS = new Set(["homePage", "aboutPage", "blogPage"])
 
 export default defineConfig({
   basePath: "/studio",
@@ -20,29 +20,24 @@ export default defineConfig({
               .title("Home Page")
               .id("homePage")
               .child(
-                S.document()
-                  .schemaType("homePage")
-                  .documentId("homePage")
+                S.document().schemaType("homePage").documentId("homePage"),
               ),
             S.listItem()
               .title("About Page")
               .id("aboutPage")
               .child(
-                S.document()
-                  .schemaType("aboutPage")
-                  .documentId("aboutPage")
+                S.document().schemaType("aboutPage").documentId("aboutPage"),
               ),
             S.listItem()
               .title("Blog Page")
               .id("blogPage")
               .child(
-                S.document()
-                  .schemaType("blogPage")
-                  .documentId("blogPage")
+                S.document().schemaType("blogPage").documentId("blogPage"),
               ),
             S.divider(),
             S.documentTypeListItem("post").title("Posts"),
             S.documentTypeListItem("tag").title("Tags"),
+            S.documentTypeListItem("project").title("Projects"),
           ]),
     }),
   ],
@@ -52,4 +47,4 @@ export default defineConfig({
     templates: (templates) =>
       templates.filter((t) => !SINGLETONS.has(t.schemaType)),
   },
-});
+})

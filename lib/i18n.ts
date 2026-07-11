@@ -6,7 +6,7 @@ const translations = {
       home: "Beranda",
       about: "Tentang",
       blog: "Blog",
-      projects: "Proyek",
+      projects: "Proyek Internal",
       contact: "Kontak",
     },
     home: {
@@ -43,7 +43,7 @@ const translations = {
       home: "Home",
       about: "About",
       blog: "Blog",
-      projects: "Projects",
+      projects: "Internal Projects",
       contact: "Contact",
     },
     home: {
