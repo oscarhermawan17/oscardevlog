@@ -4,52 +4,6 @@ import Link from "next/link";
 import { useLang } from "@/app/context/lang-context";
 import type { PostItem } from "@/sanity/queries/posts";
 
-type MockItem = {
-  format: "article" | "video";
-  title: string;
-  meta: string;
-  blurb: string;
-};
-
-const MOCK_ITEMS: MockItem[] = [
-  {
-    format: "article",
-    title: "Gak Usah Takut Docker: Panduan Setup VPS Kosongan dari Nol",
-    meta: "5 min read • Jun 2026",
-    blurb: "Dari VPS kosong sampai aplikasi jalan di belakang Nginx — langkah demi langkah, tanpa drama.",
-  },
-  {
-    format: "video",
-    title: "POV: Ketika Klien Minta Revisi Urgent Pas Lagi Kulineran di Sleman",
-    meta: "Watch Video • 1 min watch",
-    blurb: "Realita freelancer: laptop kebuka di warung, sambal masih nempel di keyboard.",
-  },
-  {
-    format: "article",
-    title: "Multi-tenant PostgreSQL: Memisahkan Data Tanpa Bikin Pusing",
-    meta: "8 min read • May 2026",
-    blurb: "Strategi schema vs row-level security, plus jebakan yang sering bikin query melambat.",
-  },
-  {
-    format: "video",
-    title: "Coding 12 Jam Sambil Jalan-jalan: Worth It atau Nggak?",
-    meta: "Watch Video • 6 min watch",
-    blurb: "Eksperimen jadi digital nomad dadakan keliling Jogja sambil ngejar deadline.",
-  },
-  {
-    format: "article",
-    title: "CI/CD GitHub Actions: Deploy Otomatis ke VPS Sendiri",
-    meta: "6 min read • Apr 2026",
-    blurb: "Bikin pipeline yang build, test, dan deploy tiap kali push ke main. Sekali setup, lupa selamanya.",
-  },
-  {
-    format: "video",
-    title: "Reaksi Programmer Lihat Kode Sendiri Setahun yang Lalu",
-    meta: "Watch Video • 2 min watch",
-    blurb: "Spoiler: cringe, ketawa, lalu refactor diam-diam.",
-  },
-];
-
 function Badge({ format }: { format: "article" | "video" }) {
   if (format === "article") {
     return (
@@ -102,19 +56,6 @@ export function BlogList({ posts }: { posts: PostItem[] }) {
               </p>
             </article>
           </Link>
-        </li>
-      ))}
-
-      {MOCK_ITEMS.map((item) => (
-        <li key={item.title}>
-          <article className={cardClass(item.format)}>
-            <div><Badge format={item.format} /></div>
-            <h2 className="text-lg font-bold leading-snug text-ink">
-              {item.title}
-            </h2>
-            <p className="flex-1 text-sm leading-6 text-muted">{item.blurb}</p>
-            <p className="font-mono text-xs text-muted">{item.meta}</p>
-          </article>
         </li>
       ))}
     </ul>
