@@ -9,7 +9,6 @@ const require = createRequire(import.meta.url);
 const workspaceRoot = path.resolve(require.resolve("next/package.json"), "../../..");
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["next-sanity", "sanity"],
   turbopack: {
     root: workspaceRoot,
   },
