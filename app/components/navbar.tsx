@@ -15,6 +15,7 @@ export function Navbar() {
     { href: "/about", label: t.nav.about },
     { href: "/blog", label: t.nav.blog },
     { href: "/projects", label: t.nav.projects },
+    { href: "/explore", label: t.nav.explore },
     { href: "/contact", label: t.nav.contact },
   ];
 

@@ -38,6 +38,7 @@ export default defineConfig({
             S.documentTypeListItem("post").title("Posts"),
             S.documentTypeListItem("tag").title("Tags"),
             S.documentTypeListItem("project").title("Projects"),
+            S.documentTypeListItem("place").title("Places"),
           ]),
     }),
   ],

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const PAGE_ORDER = ["/", "/about", "/blog", "/projects"];
+const PAGE_ORDER = ["/", "/about", "/blog", "/projects", "/explore", "/contact"];
 
 function getIndex(path: string) {
   const idx = PAGE_ORDER.findIndex((p) =>
