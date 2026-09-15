@@ -3,7 +3,7 @@ import { sanityClient } from "@/lib/sanity";
 import type { PortableTextBlock } from "sanity";
 import type { FacilityKey, GoodForKey, RatingAspectKey } from "@/lib/place-options";
 
-export type PlaceType = "hotel" | "coffeeshop" | "public-space";
+export type PlaceType = "hotel" | "coffeeshop" | "public-space" | "eatery";
 
 export type PlaceMediaItem =
   | {

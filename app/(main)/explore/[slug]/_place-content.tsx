@@ -37,6 +37,7 @@ const TYPE_BADGE: Record<PlaceDetail["type"], string> = {
   hotel: "bg-sky text-[#0B0F19]",
   coffeeshop: "bg-rose text-white",
   "public-space": "border border-white/20 bg-white/5 text-ink",
+  eatery: "border border-rose/40 bg-rose/10 text-rose",
 };
 
 const ASPECT_ICON: Record<RatingAspectKey, LucideIcon> = {
@@ -246,7 +247,7 @@ function MediaLightbox({
       </div>
 
       <div className="relative flex flex-1 items-center justify-center px-4 pb-6 sm:px-16">
-        <div className="aspect-video w-full max-w-4xl overflow-hidden rounded-xl">
+        <div className="aspect-video w-[min(100%,calc(75vh*16/9),56rem)] overflow-hidden rounded-xl">
           {item._type === "mediaVideo" ? (
             <iframe
               src={toYouTubeEmbedUrl(item.youtubeUrl)}

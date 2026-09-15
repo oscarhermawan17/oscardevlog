@@ -62,4 +62,5 @@ export const PLACE_TYPE_LABEL = {
   hotel: { id: "Hotel", en: "Hotel" },
   coffeeshop: { id: "Coffee Shop", en: "Coffee Shop" },
   "public-space": { id: "Public Space", en: "Public Space" },
+  eatery: { id: "Tempat Makan", en: "Eatery" },
 } as const;

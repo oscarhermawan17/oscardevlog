@@ -160,6 +160,7 @@ export const place = defineType({
           { title: "Hotel", value: "hotel" },
           { title: "Coffee Shop", value: "coffeeshop" },
           { title: "Public Space", value: "public-space" },
+          { title: "Eatery", value: "eatery" },
         ],
         layout: "radio",
       },
@@ -428,6 +429,7 @@ export const place = defineType({
         hotel: "🏨 Hotel",
         coffeeshop: "☕ Coffee Shop",
         "public-space": "🌳 Public Space",
+        eatery: "🍜 Eatery",
       };
       return {
         title: title ?? "Untitled Place",

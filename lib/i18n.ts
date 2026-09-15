@@ -52,6 +52,9 @@ const translations = {
       visitedAt: "Dikunjungi",
       publishedAt: "Ditulis",
       free: "Gratis",
+      pageTitle: "Eksplor",
+      pageSubtitle:
+        "Halaman ini saya gunakan untuk bercerita soal tempat-tempat yang pernah saya kunjungi — hunting makanan, hotel, sampai public space. Nyari warung makan yang lezat, coffee shop dengan suasana nyaman buat nugas, hotel yang worth it, sampai spot publik favorit buat healing.",
     },
     footer: {
       rights: "Hak cipta dilindungi.",
@@ -109,6 +112,9 @@ const translations = {
       visitedAt: "Visited",
       publishedAt: "Written",
       free: "Free",
+      pageTitle: "Explore",
+      pageSubtitle:
+        "This is where I document the places I've actually been to — hunting good food, decent hotels, or a solid public space to hang out. Always on the lookout for tasty local eats, coffee shops with the right vibe for getting work done, hotels that are genuinely worth it, and public spots worth going back to.",
     },
     footer: {
       rights: "All rights reserved.",

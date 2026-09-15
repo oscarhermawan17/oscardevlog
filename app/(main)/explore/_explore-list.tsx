@@ -9,6 +9,7 @@ const TYPE_BADGE: Record<PlaceItem["type"], string> = {
   hotel: "bg-sky text-[#0B0F19]",
   coffeeshop: "bg-rose text-white",
   "public-space": "border border-white/20 bg-white/5 text-ink",
+  eatery: "border border-rose/40 bg-rose/10 text-rose",
 };
 
 function formatPrice(min: number, max: number, freeLabel: string) {
